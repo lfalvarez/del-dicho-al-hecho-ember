@@ -18,6 +18,15 @@ export default DS.Model.extend(CalculationsMixin, {
       let promises = this.getPromisesPerStudy(study);
       return this.getAverageFrom(promises, 'fullfilment');
     },
+    fullfilmentPerGovernment: function(gov){
+      let sum_of_fullfilments = 0;
+      let fullfilmentPerStudy = this.fullfilmentPerStudy;
+      fullfilmentPerStudy = fullfilmentPerStudy.bind(this);
+      gov.get('studies').forEach(function(study){
+        sum_of_fullfilments += parseInt(fullfilmentPerStudy(study));
+      });
+      return sum_of_fullfilments;
+    },
     getPoliticalWillByStudy: function(study){
       let promises = this.getPromisesPerStudy(study);
       let count = 0;

@@ -28,8 +28,20 @@ moduleForModel('area', 'Unit | Model | area', {
                                      'id':'ba',
                                      'title':'title01',
                                      'fullfilment':'100%'
-                                     
+
                                     });
+    let study1a = this.store().createRecord('study', {'version': 'marzo', 'year': '2016'});
+    gov1.get('studies').pushObject(study1a);
+    this.store().createRecord('promise',{'content':'content01',
+                                         'number':'1',
+                                         'title':'title01',
+                                         'study': study1a,'coherenceLevel': 4,
+                                         'area': area1});
+    this.store().createRecord('promise',{'content':'content02',
+                                         'number':'2',
+                                         'title':'title02',
+                                         'study': study1a,'coherenceLevel': 1,
+                                         'area': area1});
    let justification1 = this.store().createRecord('justification', {'promise': promesa_1, 'bill': bill_a});
    let bill_b = this.store().createRecord('bill',{'name':'name_b',
                                      'id':'bb',
@@ -107,8 +119,10 @@ moduleForModel('area', 'Unit | Model | area', {
     return {"area1": area1,
             "area2": area2,
             "study1": study1,
+            "study1a": study1a,
             "bill1": bill_a,
             "justification1": justification1,
+            "gov1": gov1,
             "study2": study2};
   }
 });
@@ -141,6 +155,13 @@ test('area getFulfillment by study', function(assert){
   assert.equal(data.area1.fullfilmentPerStudy(data.study2), 78);
   assert.equal(data.area2.fullfilmentPerStudy(data.study2), 0);
 });
+test('area getFulfillmentPerGovernment', function(assert){
+
+  let data = this.loadData();
+
+  let sum_fullfilments = parseInt(data.area1.fullfilmentPerStudy(data.study1)) + parseInt(data.area1.fullfilmentPerStudy(data.study1a));
+  assert.equal(data.area1.fullfilmentPerGovernment(data.gov1), sum_fullfilments);
+});
 
 test('getCapacity', function(assert){
   let data = this.loadData();
@@ -150,7 +171,6 @@ test('getCapacity', function(assert){
 test('area getCoherenceLevelByStudy', function(assert){
 
   let data = this.loadData();
-
   assert.equal(data.area1.coherenceLevelByStudy(data.study1), 2.5, 'a');
   assert.equal(data.area2.coherenceLevelByStudy(data.study1), 2, 'b');
   assert.equal(data.area1.coherenceLevelByStudy(data.study2), 3.5, 'c');
