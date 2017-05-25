@@ -310,11 +310,12 @@ section{
   margin-top: 50px;}
 
 .chart-resume{
-  margin: -110px 0 10px 0;}
+  margin: -105px 0 10px 0;}
 
 .img-chart{
   position: relative;
-  top: 125px;}
+  top: 121px;
+  z-index: -1;}
 
 /*HIGHLIGHT ELEMENTS*/
 .badge {
