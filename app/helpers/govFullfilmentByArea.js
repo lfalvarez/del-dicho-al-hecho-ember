@@ -15,6 +15,6 @@ export default Ember.Helper.extend({
       f = f + parseInt(area.fullfilmentPerStudy(s));
     });
 
-    return _.round(f/studies.length,0);
+    return f;
   }
 });
