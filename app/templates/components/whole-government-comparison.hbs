@@ -127,9 +127,11 @@
         <div class="container">
         <div class="row">
           <div class="col-md-12">
-            {{#each model.comparable as |study|}}
-            <p><i class="fa fa-circle" aria-hidden="true" style="padding-left: 9px; color: {{study.color}}"></i> {{model.name}} {{study.year}}</p>
-            {{/each}}
+            <ul class="list-unstyled">
+              {{#each model.comparable as |study|}}
+              <li><i class="fa fa-circle" aria-hidden="true" style="padding-left: 9px; color: {{study.color}}"></i> {{model.name}} {{study.year}}</li>
+              {{/each}}
+            </ul>
           </div>
         </div>
         <table class="table table-responsive">
@@ -159,8 +161,8 @@
                   {{/each}}
                 </td>
                 <td width="10%">
-                  <p class="compare-info hidden-xs hidden-sm" style="margin-top: 15px; color: {{study.color1}}">Hola%</p>
-                  <p class="compare-info hidden-md hidden-lg" style="color: {{study.color1}}">Hola%</p>
+                  <p class="compare-info hidden-xs hidden-sm" style="margin-top: 15px; color: {{study.color1}}">{{govFullfilmentByArea a model.comparable}}%</p>
+                  <p class="compare-info hidden-md hidden-lg" style="color: {{study.color1}}">{{govFullfilmentByArea a model.comparable}}%</p>
                 </td>
             </tr>
             {{/each}}
