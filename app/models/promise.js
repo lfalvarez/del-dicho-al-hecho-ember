@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 import _ from 'lodash';
 import Ember from 'ember';
+import config from '../config/environment';
 
 export default DS.Model.extend({
   content: DS.attr('string'),
@@ -39,12 +40,16 @@ export default DS.Model.extend({
   }}),
   fullfilment: DS.attr("number", {defaultValue: function(e){
     let fullfilment_bills = [];
+    let functions = {
+      'max': _.max,
+      'mean': _.mean,
+    };
     if (e.get('bills').toArray().length){
       let billsArray = e.get('bills');
       billsArray.forEach(function(b){
         fullfilment_bills.push(parseFloat(b.get('fullfilment')));
       });
-      return _.round(_.mean(fullfilment_bills), 0);
+      return _.round(functions[config.functionBills](fullfilment_bills), 0);
     } else {
       return 0;
     }

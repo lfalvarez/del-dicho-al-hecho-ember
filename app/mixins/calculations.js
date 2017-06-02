@@ -31,6 +31,25 @@ export default Ember.Mixin.create({
     }
     return 0;
   },
+  getMaxFrom: function(promises, what_from_bills){
+    let max = 0;
+    let cnt = promises.length;
+    let has_defaults = _.some(Object.keys(defaults), function(o) {return o === what_from_bills; });
+
+    _.forEach(promises, function(p){
+      if (parseFloat(p.get(what_from_bills)) > max){
+        max = parseFloat(p.get(what_from_bills));
+      }
+    });
+
+    if(cnt){
+      return max;
+    }
+    if(has_defaults){
+      return defaults[what_from_bills].returnValue;
+    }
+    return 0;
+  },
   getCompleted: function(promises){
     let completed_promises = promises.filter(function(p){
       return p.get('is_completed');
