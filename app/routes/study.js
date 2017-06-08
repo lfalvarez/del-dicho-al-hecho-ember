@@ -5,6 +5,7 @@ import config from '../config/environment';
 import _ from 'lodash';
 
 export default Ember.Route.extend(CsvParserMixin, UtilitiesMixin, {
+  templateName: 'custom/perrito',
   titleToken: function(model) {
     return model.get('name');
   },

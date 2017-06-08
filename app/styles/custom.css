@@ -1,11 +1,9 @@
-
-
 body {
   font-family: 'Karla', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #031424;
-  background-color: #D4F2FF; }
+  background-color: #B2FF; }
 
 p {
   text-align: initial;
@@ -130,7 +128,7 @@ img.logo-nav{
 
 /*SECTIONS*/
 .jumbotron{
-    background-color: #D4F2FF;}
+    background-color: #FCC58B;}
 
 section{
   padding-top: 30px;
