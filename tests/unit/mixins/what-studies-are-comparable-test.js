@@ -60,9 +60,9 @@ var governments =[{
 let expected_comparison = [
   {'version': 'Programa',
   'studies': [
-    [{'version': 'marzo', 'year': 2017},{'version': 'marzo', 'year': 2013}],
-    [{'version': 'marzo', 'year': 2016},{'version': 'marzo', 'year': 2012}],
-    [{'version': 'marzo', 'year': 2015},{'version': 'marzo', 'year': 2011}]
+    {'list': [{'version': 'marzo', 'year': 2017},{'version': 'marzo', 'year': 2013}], 'order': 3},
+    {'list': [{'version': 'marzo', 'year': 2016},{'version': 'marzo', 'year': 2012}], 'order': 2},
+    {'list': [{'version': 'marzo', 'year': 2015},{'version': 'marzo', 'year': 2011}], 'order': 1}
   ]
 }
 ];

@@ -10,8 +10,8 @@ export default Ember.Controller.extend(WhatStudiesAreComparableMixin, {
     _.forEach(comparableStudies, function(comparable_studies){
       urls[comparable_studies.version] = [];
       _.forEach(comparable_studies.studies, function(studies){
-        let s1 = studies[0];
-        let s2 = studies[1];
+        let s1 = studies.list[0];
+        let s2 = studies.list[1];
         let url1;
         let url2;
         let study_comparison = {'study1': undefined,

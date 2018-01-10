@@ -25,8 +25,11 @@ export default Ember.Mixin.create({
 
           _.forEach(gov.studies,function(s){
             if(s.year === year && isComparable(s)){
-              result.studies.push([{'version': study.version, 'year': study.year},
-                           {'version': s.version, 'year': s.year}]);
+              let compared_studies = {'list': [
+                           {'version': study.version, 'year': study.year},
+                           {'version': s.version, 'year': s.year}],
+                           'order': s.year - gov.years.start};
+              result.studies.push(compared_studies);
             }
           });
         });
